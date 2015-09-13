@@ -2,7 +2,7 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 
-flightSet <- read.csv("https://www.dropbox.com/s/9dw6hanf0ce6x9l/201509-price.csv?dl=1", header = TRUE, sep=",", quote="\"", col.names = c("url","head_line","ad_copy","query","date","price01","price02","brand","price","price_log"), row.names = NULL)
+flightSet <- read.csv("http://www.linkstomystuff.com/files/201509-price.csv?dl=1", header = TRUE, sep=",", quote="\"", col.names = c("url","head_line","ad_copy","query","date","price01","price02","brand","price","price_log"), row.names = NULL)
 flightSet$date <- as.Date(flightSet$date)
 
 function(input, output){
@@ -33,15 +33,27 @@ function(input, output){
     })
 
   output$plot <- renderPlot({
-    
-    p <- ggplot(dataset(), aes(x = date, y = price, colour = brand)) + geom_point()
+    withProgress(message = 'Calculation in progress',
+                 detail = 'This may take a while...', value = 0, {
+                   for (i in 1:15) {
+                     incProgress(1/15)
+                     Sys.sleep(0.25)
+                   }
+                 })
+    p <- ggplot(dataset(), aes(x = date, y = price, colour = brand)) + geom_point() + theme(axis.text.x = element_text(angle = 30, hjust = 1))
     
     print(p)
     
   }, height=700)
   
   output$plotDist <- renderPlot({
-    
+    withProgress(message = 'Calculation in progress',
+                 detail = 'This may take a while...', value = 0, {
+                   for (i in 1:15) {
+                     incProgress(1/15)
+                     Sys.sleep(0.25)
+                   }
+                 })
     p <- ggplot(dataset(), aes(x = price, fill = brand)) + geom_density(alpha = .3)
     
     print(p)
@@ -49,8 +61,14 @@ function(input, output){
   }, height=700)
 
   output$plotBox <- renderPlot({
-    
-    p <- ggplot(dataset(), aes(x = brand,y = price, fill = brand)) + geom_boxplot()
+    withProgress(message = 'Calculation in progress',
+                 detail = 'This may take a while...', value = 0, {
+                   for (i in 1:15) {
+                     incProgress(1/15)
+                     Sys.sleep(0.25)
+                   }
+                 })
+    p <- ggplot(dataset(), aes(x = brand,y = price, fill = brand)) + geom_boxplot() + theme(axis.text.x = element_text(angle = 30, hjust = 1))
     
     print(p)
     
