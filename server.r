@@ -18,6 +18,14 @@ function(input, output){
       ) %>%
       arrange(price)
     
+    if (input$brand != "All") {
+      f <- f %>% filter(brand == input$brand)
+    }
+    
+    if (input$query != "All") {
+      f <- f %>% filter(query == input$query)
+    }
+    
     })
 
   output$plot <- renderPlot({
