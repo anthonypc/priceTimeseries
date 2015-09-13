@@ -21,7 +21,10 @@ fluidPage(
     
     selectInput("brand", "The brand displayed in the ad's URL.",
                 c("All",levels(unique(dataset$brand)))
-    )
+    ),
+    
+    includeMarkdown("context.md")
+    
     ),
   
   mainPanel(

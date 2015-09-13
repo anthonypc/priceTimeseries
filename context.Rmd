@@ -1,0 +1,12 @@
+---
+title: "Price Timeseries"
+author: "Anthony Contoleon"
+date: "Sunday, September 13, 2015"
+output: html_document
+---
+
+##The Data
+
+Briefly the data being used here was sourced from the ads in Google's search result pages. This was done with a scraper using some PHP and a MySQL database that ran through a list of search terms and archived the html and stored the ads in the database. Archiving the pages as html turned out to be a good idea, as Google did change their mark up a few times over the course of the last year, and some data had to be extracted after the fact.
+
+Some processing was required to create the dataset used here. The display URLs in the ads required some cleaning before they could be used as a proxy for brand and the price information needed to be extracted from the headline and the adcopy. In this exercise, price is generally defined as anything that would match to "$[0-9,]+"
