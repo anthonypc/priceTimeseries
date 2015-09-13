@@ -36,4 +36,13 @@ function(input, output){
     
   }, height=700)
   
+  output$plotDist <- renderPlot({
+    
+    p <- ggplot(dataset(), aes(x = price, fill = brand)) + geom_density(alpha = .3)
+    
+    print(p)
+    
+  }, height=700)
+  
+  
 }

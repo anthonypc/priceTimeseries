@@ -12,16 +12,21 @@ fluidPage(
     dateRangeInput("date", "Date range:",
                    start = "2014-03-10",
                    end   = "2015-09-11"),
-    selectInput("brand", "The brand displayed in the ad's URL.",
-                levels(unique(dataset$brand))
-    ),
+
     selectInput("query", "The query the ad showed for.",
                 levels(unique(dataset$query))
-    )
+    ),
     
+    selectInput("brand", "The brand displayed in the ad's URL.",
+                c("All",levels(unique(dataset$brand)))
+    )
     ),
   
   mainPanel(
-    plotOutput('plot')
+    tabsetPanel(
+    tabPanel("Time Series Plot", plotOutput("plot")),
+    tabPanel("Distribution Plot", plotOutput("plotDist"))
+    
+    )
   )
 )
