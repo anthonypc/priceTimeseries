@@ -24,9 +24,10 @@ fluidPage(
   
   mainPanel(
     tabsetPanel(
-    tabPanel("Time Series Plot", plotOutput("plot")),
-    tabPanel("Distribution Plot", plotOutput("plotDist"))
-    
+      tabPanel("Time Series Plot", plotOutput("plot")),
+      tabPanel("Distribution Plot", plotOutput("plotDist")),
+      tabPanel("Price Box Plot", plotOutput("plotBox")),
+      tabPanel("Summary", verbatimTextOutput("summary"))    
     )
   )
 )

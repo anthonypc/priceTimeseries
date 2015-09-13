@@ -43,6 +43,18 @@ function(input, output){
     print(p)
     
   }, height=700)
+
+  output$plotBox <- renderPlot({
+    
+    p <- ggplot(dataset(), aes(x = brand,y = price, fill = brand)) + geom_boxplot()
+    
+    print(p)
+    
+  }, height=700)
+
+  output$summary <- renderPrint({
+    data.frame(aggregate(price ~ brand, dataset(), summary))
+  })
   
   
 }
