@@ -2,6 +2,6 @@ name: priceTimeseries
 account: anthonypc
 server: shinyapps.io
 appId: 59828
-bundleId: 264256
+bundleId: 269420
 url: https://anthonypc.shinyapps.io/priceTimeseries
-when: 1442140951.1861
+when: 1442711674.30836
