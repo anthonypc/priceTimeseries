@@ -60,20 +60,6 @@ function(input, output){
     
   }, height=700)
 
-  output$plotBox <- renderPlot({
-    withProgress(message = 'Calculation in progress',
-                 detail = 'This may take a while...', value = 0, {
-                   for (i in 1:15) {
-                     incProgress(1/15)
-                     Sys.sleep(0.25)
-                   }
-                 })
-    p <- ggplot(dataset(), aes(x = brand,y = price, fill = brand)) + geom_boxplot() + theme(axis.text.x = element_text(angle = 30, hjust = 1))
-    
-    print(p)
-    
-  }, height=700)
-
   output$summary <- renderPrint({
     data.frame(aggregate(price ~ brand, dataset(), summary))
   })
