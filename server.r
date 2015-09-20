@@ -69,7 +69,7 @@ function(input, output){
                      Sys.sleep(0.25)
                    }
                  })
-    p <- ggplot(dataset(), aes(x = date, y = price)) + geom_boxplot(aes(group = date)) + theme(axis.text.x = element_text(angle = 30, hjust = 1))
+    p <- ggplot(dataset(), aes(x = date, y = price)) + geom_boxplot(aes(group = date)) + stat_smooth(method = loess) + theme(axis.text.x = element_text(angle = 30, hjust = 1))
     
     print(p)
     
